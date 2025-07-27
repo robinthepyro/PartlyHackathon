@@ -13,14 +13,18 @@ win.geometry("720x1280")
 
 tabcontrol = ttk.Notebook(win)
 
-front_tab = ttk.Frame(tabcontrol)
-rear_tab = ttk.Frame(tabcontrol)
-left_tab = ttk.Frame(tabcontrol)
-right_tab = ttk.Frame(tabcontrol)
-tabcontrol.add(front_tab, text="front_tab")
-tabcontrol.add(rear_tab, text="rear_tab")
-tabcontrol.add(left_tab, text="left_tab")
-tabcontrol.add(right_tab, text="right_tab")
+home_page = ttk.Frame(tabcontrol)
+Q1 = ttk.Frame(tabcontrol)
+Q2 = ttk.Frame(tabcontrol)
+Q3 = ttk.Frame(tabcontrol)
+
+Result = ttk.Frame(tabcontrol)
+tabcontrol.add(home_page, text="Home")
+tabcontrol.add(Q1, text="Q1")
+tabcontrol.add(Q2, text="Q2")
+tabcontrol.add(Q3, text="Q3")
+
+tabcontrol.add(Result, text="Result")
 tabcontrol.pack(expand=1, fill="both")
 
 window_width = 800
@@ -61,7 +65,7 @@ win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 img = Image.open("./assets/part.png")
 img = img.resize((300,300))
 image = ImageTk.PhotoImage(img)
-la = tk.Label(front_tab, image=image)
+la = tk.Label(home_page, image=image)
 la.pack()
 win.mainloop()
 
