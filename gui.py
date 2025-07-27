@@ -52,7 +52,10 @@ tabcontrol.add(Q1, text="FRONT")
 tabcontrol.add(Q2, text="BACK")
 tabcontrol.add(Q3, text="LEFT")
 tabcontrol.add(Q4, text="RIGHT")
-button_start = tk.Button(home_page, text="Start Assessment", command=lambda: tabcontrol.select(print("Assessment Started")))
+
+
+
+button_start = tk.Button(home_page, text="Start Assessment", command=lambda: tabcontrol.select(print("Assessment Started"), start_assessment()))
 button_wind = tk.Button(Q1, text="Windshield", command=lambda: tabcontrol.select(print("Windshield Selected")))
 button_headlights = tk.Button(Q2, text="Headlights", command=lambda: tabcontrol.select(print("Headlights Selected")))
 button_bumper_front = tk.Button(Q3, text="Front Bumper", command=lambda: tabcontrol.select(print("Front Bumper Selected")))
@@ -91,6 +94,10 @@ timer_label_q3 = tk.Label(Q3, text="Timer: 0s", font=("Arial", 14),fg="red")
 timer_label_q3.pack(pady=20)
 timer_label_q3.place(relx=1.0, y=10, anchor="ne", x=-10)
 
+timer_label_q4 = tk.Label(Q4, text="Timer: 0s", font=("Arial", 14),fg="red")
+timer_label_q4.pack(pady=20)
+timer_label_q4.place(relx=1.0, y=10, anchor="ne", x=-10)
+
 timer_label_result = tk.Label(Result, text="Timer: 0s", font=("Arial", 14),fg="red")
 timer_label_result.pack(pady=20)
 timer_label_result.place(relx=1.0, y=10, anchor="ne", x=-10)
@@ -103,6 +110,8 @@ def update_timer():
     timer_label_q1.config(text=f"Timer: {seconds_elapsed}s")
     timer_label_q2.config(text=f"Timer: {seconds_elapsed}s")
     timer_label_q3.config(text=f"Timer: {seconds_elapsed}s")
+    timer_label_q4.config(text=f"Timer: {seconds_elapsed}s")
+
     timer_label_result.config(text=f"Timer: {seconds_elapsed}s")
 
 
