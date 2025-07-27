@@ -191,29 +191,6 @@ image = ImageTk.PhotoImage(img)
 button_row = tk.Frame(Q1)
 button_row.pack(pady=20)
 
-car_parts = [
-    {"name": "Hood", "img_path": "./assets/part.png"},
-    {"name": "Bumper", "img_path": "./assets/part.png"},
-    {"name": "Headlight", "img_path": "./assets/part.png"}
-]
-
-images = []
-
-for part in car_parts:
-    img = Image.open(part["img_path"]).resize((100, 100))
-    photo = ImageTk.PhotoImage(img)
-    images.append(photo) 
-
-    # Create the button
-    btn = tk.Button(
-        button_row,
-        image=photo,
-        text=part["name"],
-        compound="top",
-        width=120,
-        height=140,
-    )
-    btn.pack(side="left", padx=10)
 
 #home page
 message_left = tk.Label(home_page, text="Partly x WDCC Hackathon")
@@ -240,10 +217,10 @@ backimg = Image.open("./assets/back.png")
 leftimg = Image.open("./assets/leftside.png")
 rightimg = Image.open("./assets/leftside.png")
 
-frontimg = frontimg.resize((300,300))
-backimg = backimg.resize((300,300))
-leftimg = leftimg.resize((300,300))
-rightimg = rightimg.resize((300,300))
+frontimg = frontimg.resize((300,250))
+backimg = backimg.resize((310,250))
+leftimg = leftimg.resize((320,250))
+rightimg = rightimg.resize((320,250))
 front_image = ImageTk.PhotoImage(frontimg)
 back_image = ImageTk.PhotoImage(backimg)
 left_image = ImageTk.PhotoImage(leftimg)
