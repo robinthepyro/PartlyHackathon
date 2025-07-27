@@ -1,11 +1,9 @@
 import tkinter as tk
-from .state import Car
 from tkinter import ttk
 from PIL import Image,ImageTk
 
 
 # init state
-state = new Car
 
 BACKGROUND_COLOUR = "white"
 win = tk.Tk()
@@ -24,6 +22,18 @@ tabcontrol.add(rear_tab, text="rear_tab")
 tabcontrol.add(left_tab, text="left_tab")
 tabcontrol.add(right_tab, text="right_tab")
 tabcontrol.pack(expand=1, fill="both")
+
+window_width = 800
+window_height = 500
+
+#place the window on the center of the screen
+screen_width = win.winfo_screenwidth()
+screen_height = win.winfo_screenheight()
+
+center_x = int(screen_width/2 - window_width / 2)
+center_y = int(screen_height/2 - window_height / 2)
+
+win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
 # front
 # lights
