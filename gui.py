@@ -53,9 +53,23 @@ tabcontrol.add(Q2, text="BACK")
 tabcontrol.add(Q3, text="LEFT")
 tabcontrol.add(Q4, text="RIGHT")
 
+def start_assessment():
+    # Switch to Q1 tab
+    tabcontrol.select(Q1)
+    # Reset timer and start it
+    global seconds_elapsed
+    seconds_elapsed = 0
+    update_timer()
 
 
-button_start = tk.Button(home_page, text="Start Assessment", command=lambda: tabcontrol.select(print("Assessment Started"), start_assessment()))
+
+button_start = tk.Button(home_page, 
+                         text="Start Assessment", 
+                         bg="indian red",
+                         fg="black",
+                         width=20,
+                         height=2,
+                         command=lambda: tabcontrol.select(print("Assessment Started"), start_assessment())).place(x=300, y=300)
 button_wind = tk.Button(Q1, text="Windshield", command=lambda: tabcontrol.select(print("Windshield Selected")))
 button_headlights = tk.Button(Q2, text="Headlights", command=lambda: tabcontrol.select(print("Headlights Selected")))
 button_bumper_front = tk.Button(Q3, text="Front Bumper", command=lambda: tabcontrol.select(print("Front Bumper Selected")))
@@ -143,15 +157,6 @@ def go_to_q1():
     tabcontrol.select(Q1)
 
 
-tk.Button(
-    home_page,
-    text='START',
-    bg="indian red",
-    fg="black",
-    width=20,
-    height=2,
-    command=start_assessment
-).place(x=300, y=300)
 
 #selection of options
 def go_to_q2():
@@ -186,7 +191,6 @@ for part in car_parts:
         compound="top",
         width=120,
         height=140,
-        command=go_to_q2
     )
     btn.pack(side="left", padx=10)
 
@@ -228,7 +232,6 @@ button_left_front_door.pack(pady=20)
 button_left_back_door.pack(pady=20)
 button_right_front_door.pack(pady=20)
 button_right_back_door.pack(pady=20)
-button_start.pack(pady=20)
 
 
 # rear
@@ -246,11 +249,7 @@ button_start.pack(pady=20)
 # windows
 # what others??
 
-img = Image.open("./assets/part.png")
-img = img.resize((300,300))
-image = ImageTk.PhotoImage(img)
-la = tk.Label(home_page, image=image)
-la.pack()
+
 win.mainloop()
 
 
