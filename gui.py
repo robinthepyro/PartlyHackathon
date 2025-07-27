@@ -38,14 +38,18 @@ win.geometry("720x1280")
 
 tabcontrol = ttk.Notebook(win)
 
-front_tab = ttk.Frame(tabcontrol)
-rear_tab = ttk.Frame(tabcontrol)
-left_tab = ttk.Frame(tabcontrol)
-right_tab = ttk.Frame(tabcontrol)
-tabcontrol.add(front_tab, text="front_tab")
-tabcontrol.add(rear_tab, text="rear_tab")
-tabcontrol.add(left_tab, text="left_tab")
-tabcontrol.add(right_tab, text="right_tab")
+home_page = ttk.Frame(tabcontrol)
+Q1 = ttk.Frame(tabcontrol)
+Q2 = ttk.Frame(tabcontrol)
+Q3 = ttk.Frame(tabcontrol)
+
+Result = ttk.Frame(tabcontrol)
+tabcontrol.add(home_page, text="Home")
+tabcontrol.add(Q1, text="Q1")
+tabcontrol.add(Q2, text="Q2")
+tabcontrol.add(Q3, text="Q3")
+
+tabcontrol.add(Result, text="Result")
 tabcontrol.pack(expand=1, fill="both")
 
 window_width = 800
@@ -59,6 +63,61 @@ center_x = int(screen_width/2 - window_width / 2)
 center_y = int(screen_height/2 - window_height / 2)
 
 win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
+
+
+#start button and timer
+def go_to_q1():
+    tabcontrol.select(Q1)
+
+
+tk.Button(
+    home_page,
+    text='START',
+    bg="indian red",
+    fg="black",
+    width=20,
+    height=2,
+    command=go_to_q1
+).place(x=300, y=300)
+
+#selection of options
+def go_to_q2():
+    tabcontrol.select(Q2)
+
+img = Image.open("./assets/part.png")
+img = img.resize((200,200))
+image = ImageTk.PhotoImage(img)
+
+
+button_row = tk.Frame(Q1)
+button_row.pack(pady=20)
+
+car_parts = [
+    {"name": "Hood", "img_path": "./assets/part.png"},
+    {"name": "Bumper", "img_path": "./assets/part.png"},
+    {"name": "Headlight", "img_path": "./assets/part.png"}
+]
+
+images = []
+
+for part in car_parts:
+    img = Image.open(part["img_path"]).resize((100, 100))
+    photo = ImageTk.PhotoImage(img)
+    images.append(photo) 
+
+    # Create the button
+    btn = tk.Button(
+        button_row,
+        image=photo,
+        text=part["name"],
+        compound="top",
+        width=120,
+        height=140,
+        command=go_to_q2
+    )
+    btn.pack(side="left", padx=10)
+
+
 
 # front
 # lights
@@ -83,11 +142,7 @@ win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 # windows
 # what others??
 
-img = Image.open("./assets/part.png")
-img = img.resize((300,300))
-image = ImageTk.PhotoImage(img)
-la = tk.Label(front_tab, image=image)
-la.pack()
+
 win.mainloop()
 
 
