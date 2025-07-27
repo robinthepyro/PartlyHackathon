@@ -1,11 +1,12 @@
 import requests
 import json
 # URL (make sure to add a value for tree_root_ghca_id if needed)
+world_tree_url = "https://api.dev3.partly.pro/api/v1/world-tree.search"
 vrm_url = "https://api.dev3.partly.pro/api/v1/vrm.search"
 vrm_params = {
     "identifier": 
     {
-        "plate": "HTC5",
+        "plate": "JAJ858",
         "region": "UREG32",
         "state": None
     }
@@ -44,4 +45,30 @@ print("Status Code:", vehicle_response.status_code)
 id = vehicle_response.json()["variants"][0]["id"]
 assembly_response = requests.post(assembly_url, headers=headers, json={"oem_vehicle_id": id})
 print("Status Code:", assembly_response.status_code)
-print(assembly_response.json())
+print(assembly_response.json()['gapc_human_centric_assemblies']['GHCA9452']['gapc_position_id'])
+
+def find_part_children(part_id):
+    world_tree = requests.post(world_tree_url, headers=headers, json={'tree_root_ghca_id': part_id})
+    if world_tree.status_code == 200:
+        return list(world_tree.json()['nodes'].keys())[1:]
+    return []
+
+print(find_part_children('GHCA6437'))
+
+def populate_children(part_ids):
+    queue = part_ids
+    all_children = list(part_ids)
+    i = 0
+    while queue:
+        i += 1
+        print(i)
+        parent = queue.pop()
+        print(parent)
+        children = find_part_children(parent)
+        all_children.extend(children)
+        queue.extend(children)
+        if i > 1000:
+            break
+    return all_children
+
+print(populate_children())
