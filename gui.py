@@ -2,8 +2,33 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image,ImageTk
 
+# state of car
+#
+# need make model year parts list
+#
+class Car:
+    make =""
+    model=""
+    year=0
+    undamaged_parts=[]
+
+    def __init__(self, make, model, year, undamaged_parts=[]):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.undamaged_parts = undamaged_parts 
+
+    def add_undamaged(self,part_number):
+        self.undamaged_parts.append(part_number)
+
+    def remove_undamaged(self,part_number):
+        self.undamaged_parts.remove(part_number)
 
 # init state
+state= Car("Honda", "Civic", "2009")
+print(state.undamaged_parts)
+state.add_undamaged("ALSKDJ:LASDKJ")
+print(state.undamaged_parts)
 
 BACKGROUND_COLOUR = "white"
 win = tk.Tk()
