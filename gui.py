@@ -69,7 +69,7 @@ button_start = tk.Button(home_page,
                          fg="black",
                          width=20,
                          height=2,
-                         command=lambda: tabcontrol.select(print("Assessment Started"), start_assessment())).place(x=300, y=300)
+                         command=lambda: tabcontrol.select(print("Assessment Started"), start_assessment())).place(x=325, y=300)
 button_wind = tk.Button(Q1, text="Windshield", command=lambda: tabcontrol.select(print("Windshield Selected")))
 button_headlights = tk.Button(Q2, text="Headlights", command=lambda: tabcontrol.select(print("Headlights Selected")))
 button_bumper_front = tk.Button(Q3, text="Front Bumper", command=lambda: tabcontrol.select(print("Front Bumper Selected")))
@@ -194,7 +194,19 @@ for part in car_parts:
     )
     btn.pack(side="left", padx=10)
 
+#home page
+message_left = tk.Label(home_page, text="Partly x WDCC Hackathon")
+message_left.place(x=10, y=10, anchor="nw")
 
+message_right = tk.Label(home_page, text="Team #4")
+message_right.place(relx=1.0, x=-10, y=10, anchor="ne")
+
+message_title = tk.Label(
+    home_page, 
+    text="Let's Diagnose Your Crashed Car", 
+    font=("Arial", 24, "bold")
+)
+message_title.place(x=400, y=150, anchor="center")
 
 # front
 # lights
