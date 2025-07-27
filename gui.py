@@ -25,10 +25,16 @@ class Car:
         self.undamaged_parts.remove(part_number)
 
 # init state
-state= Car("Honda", "Civic", "2009")
-print(state.undamaged_parts)
-state.add_undamaged("ALSKDJ:LASDKJ")
-print(state.undamaged_parts)
+vehicle= Car("Honda", "Civic", "2009")
+print(vehicle.undamaged_parts)
+vehicle.add_undamaged("ALSKDJ:LASDKJ")
+print(vehicle.undamaged_parts)
+
+def add_undamaged_part(part):
+    vehicle.add_undamaged(part)
+
+def remove_undamaged_part(part):
+    vehicle.remove_undamaged(part)
 
 BACKGROUND_COLOUR = "white"
 win = tk.Tk()
@@ -61,6 +67,21 @@ button_left_front_door = tk.Button(Q1, text="Left Door", command=lambda: tabcont
 button_left_back_door = tk.Button(Q2, text="Left Back Door", command=lambda: tabcontrol.select(print("Left Back Door Selected")))
 button_right_front_door = tk.Button(Q3, text="Right Front Door", command=lambda: tabcontrol.select(print("Right Front Door Selected")))
 button_right_back_door = tk.Button(Q2, text="Right Door", command=lambda: tabcontrol.select(print("Right back Door Selected")))
+
+parts = {
+    "Windshield": "GHCA59",
+    "Headlights": "GHCA8950",
+    "Front Bumper": "GHCA7570",
+    "Back Bumper": "GHCA234",
+    "Left Door": "GHCA27",
+    "Right Door": "GHCA416",
+    "Left Back Door": "GHCA468",
+    "Right Back Door": "GHCA520",
+    "Fender Right": "GHCA7496",
+    "Fender Left": "GHCA7495",
+    "Rear Light Left": "GHCA29",
+    "Rear Light Right": "GHCA1415"
+}
 
 tabcontrol.add(Result, text="Result")
 tabcontrol.pack(expand=1, fill="both")
