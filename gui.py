@@ -68,8 +68,7 @@ def submit():
     complete = populate_children(car.undamaged_parts)
 
     print("complete = " , complete)
-    with open("undamaged_parts.json","w") as f:
-
+    with open("out.txt","w") as f:
         f.write(", ".join(complete))
 
     exit()
