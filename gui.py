@@ -64,6 +64,20 @@ center_y = int(screen_height/2 - window_height / 2)
 
 win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
+
+
+tk.Button(home_page, 
+          text='START', 
+          bg="indian red", 
+          fg="black",
+          width = 20,
+          height = 2
+          ).pack(pady=220,
+                 padx=50, 
+                 side="top")
+
+
+
 # front
 # lights
 # bumper
@@ -90,7 +104,7 @@ win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 img = Image.open("./assets/part.png")
 img = img.resize((300,300))
 image = ImageTk.PhotoImage(img)
-la = tk.Label(home_page, image=image)
+la = tk.Label(Q1, image=image)
 la.pack()
 win.mainloop()
 
