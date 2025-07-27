@@ -65,16 +65,57 @@ center_y = int(screen_height/2 - window_height / 2)
 win.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
 
+#start button and timer
+def go_to_q1():
+    tabcontrol.select(Q1)
 
-tk.Button(home_page, 
-          text='START', 
-          bg="indian red", 
-          fg="black",
-          width = 20,
-          height = 2
-          ).pack(pady=220,
-                 padx=50, 
-                 side="top")
+
+tk.Button(
+    home_page,
+    text='START',
+    bg="indian red",
+    fg="black",
+    width=20,
+    height=2,
+    command=go_to_q1
+).place(x=300, y=300)
+
+#selection of options
+def go_to_q2():
+    tabcontrol.select(Q2)
+
+img = Image.open("./assets/part.png")
+img = img.resize((200,200))
+image = ImageTk.PhotoImage(img)
+
+
+button_row = tk.Frame(Q1)
+button_row.pack(pady=20)
+
+car_parts = [
+    {"name": "Hood", "img_path": "./assets/part.png"},
+    {"name": "Bumper", "img_path": "./assets/part.png"},
+    {"name": "Headlight", "img_path": "./assets/part.png"}
+]
+
+images = []
+
+for part in car_parts:
+    img = Image.open(part["img_path"]).resize((100, 100))
+    photo = ImageTk.PhotoImage(img)
+    images.append(photo) 
+
+    # Create the button
+    btn = tk.Button(
+        button_row,
+        image=photo,
+        text=part["name"],
+        compound="top",
+        width=120,
+        height=140,
+        command=go_to_q2
+    )
+    btn.pack(side="left", padx=10)
 
 
 
@@ -101,11 +142,7 @@ tk.Button(home_page,
 # windows
 # what others??
 
-img = Image.open("./assets/part.png")
-img = img.resize((300,300))
-image = ImageTk.PhotoImage(img)
-la = tk.Label(Q1, image=image)
-la.pack()
+
 win.mainloop()
 
 
